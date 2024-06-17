@@ -24,6 +24,6 @@ public class MkdirCommand implements Command{
     }
 
     cli.currentDirectory.add(new Directory(directoryName));
-    return directoryName + " directory created successfully";
+    return "'" + directoryName + "'" + " directory created";
   }
 }

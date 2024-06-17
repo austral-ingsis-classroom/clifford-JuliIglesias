@@ -24,6 +24,6 @@ public class TouchCommand implements Command{
       return "Invalid name, cannot contain '/'";
     }
     cli.currentDirectory.add(new File(name));
-    return name + " file created";
+    return "'" + name + "' file created";
   }
 }

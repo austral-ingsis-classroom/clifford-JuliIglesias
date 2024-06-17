@@ -56,7 +56,7 @@ public class CdCommand implements Command{
         break;
     }
 
-    return "Change Directory to: " + cli.currentDirectory.getName();
+    return "moved to directory '" + cli.currentDirectory.getName() + "'";
   }
 
   private void navigateToDirectory(String[] ruta) {

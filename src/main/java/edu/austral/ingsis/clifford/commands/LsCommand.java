@@ -4,6 +4,7 @@ import edu.austral.ingsis.clifford.CLI;
 import edu.austral.ingsis.clifford.files.Directory;
 import edu.austral.ingsis.clifford.files.FileSystem;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
@@ -28,7 +29,7 @@ public class LsCommand implements Command {
 
     String option = options.getFirst();
 
-    if (option.equals("--ord=")) {
+    if (option.startsWith("--ord=")) {
       switch (option.split("=")[1]) {
         case "asc":
           names.sort(String::compareTo);
@@ -36,17 +37,23 @@ public class LsCommand implements Command {
 
         case "desc":
           names.sort(Comparator.reverseOrder());
+          break;
+
         default:
           return "Invalid parameter: " + option.split("=")[1];
       }
       return listNames(names);
     }
 
-    return "Invalid option: " + option;
+    return "error";
   }
 
   private List<String> getListName(List<FileSystem> fileSystems) {
-    return fileSystems.stream().map(FileSystem::getName).toList();
+    List<String> names = new ArrayList<>();
+    for (FileSystem fileSystem : fileSystems) {
+      names.add(fileSystem.getName());
+    }
+    return names;
   }
 
   private String listNames(List<String> names) {
