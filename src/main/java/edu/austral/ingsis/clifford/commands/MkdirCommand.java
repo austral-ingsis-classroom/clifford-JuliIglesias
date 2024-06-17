@@ -15,12 +15,12 @@ public class MkdirCommand implements Command{
   @Override
   public String execute(List<String> options, List<String> arguments) {
     if (options.size() + arguments.size() != 1) {
-      return "mkdir: missing operand";
+      return "missing argument";
     }
     String directoryName = options.isEmpty() ? arguments.getFirst() : options.getFirst();
 
     if (directoryName.equals("/")) {
-      return "mkdir: cannot create directory with '/'";
+      return "directory cannot contain a / in it's name";
     }
 
     cli.currentDirectory.add(new Directory(directoryName));

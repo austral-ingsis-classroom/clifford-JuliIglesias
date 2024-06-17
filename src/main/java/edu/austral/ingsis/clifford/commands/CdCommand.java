@@ -16,10 +16,10 @@ public class CdCommand implements Command{
   @Override
   public String execute(List<String> options, List<String> arguments) {
     if (!options.isEmpty()){
-      return "Invalid option";
+      return "no options allowed";
     }
     if (arguments.size() != 1){
-      return "Invalid number of arguments";
+      return "invalid arguments";
     }
 
     String arg = arguments.getFirst();
@@ -28,7 +28,7 @@ public class CdCommand implements Command{
         Directory parent = findDirWithName(cli.root, cli.currentDirectory.getName());
         if (parent == null){
           cli.currentDirectory = cli.root;
-          return "Change Directory to: " + cli.root.getName();
+          return "moved to directory '" + cli.root.getName() +"'";
         }
         cli.currentDirectory = findDirWithName(cli.root, cli.currentDirectory.getName());
         break;
@@ -67,7 +67,7 @@ public class CdCommand implements Command{
         cli.currentDirectory = (Directory) nextDir;
       } catch (Exception e){
         cli.currentDirectory = start;
-        throw new IllegalArgumentException("Directory not found: " + dir);
+        throw new IllegalArgumentException("'" + dir + "' directory does not exist");
       }
     }
   }
