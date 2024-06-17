@@ -1,16 +1,19 @@
 package edu.austral.ingsis.clifford.commands;
 
+import edu.austral.ingsis.clifford.CLI;
 import edu.austral.ingsis.clifford.files.Directory;
 
-public class TouchCommand implements Command{
-  private final Directory directory;
+import java.util.List;
 
-  public TouchCommand(Directory directory) {
-    this.directory = directory;
+public class TouchCommand implements Command{
+  private final CLI cli;
+
+  public TouchCommand(CLI cli){
+    this.cli = cli;
   }
 
   @Override
-  public void execute() {
+  public String execute(List<String> options, List<String> arguments) {
     directory.print();
   }
 }
