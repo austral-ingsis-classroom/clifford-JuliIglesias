@@ -20,7 +20,7 @@ public class MkdirCommand implements Command{
     String directoryName = options.isEmpty() ? arguments.getFirst() : options.getFirst();
 
     if (directoryName.equals("/")) {
-      return "directory cannot contain a / in it's name";
+      return "directory cannot contain a '/' in it's name";
     }
 
     cli.currentDirectory.add(new Directory(directoryName));
