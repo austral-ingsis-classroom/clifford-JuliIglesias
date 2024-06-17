@@ -16,11 +16,11 @@ public class RmCommand implements Command{
   @Override
   public String execute(List<String> options, List<String> arguments) {
     if (options.isEmpty() && arguments.isEmpty()) {
-      return "rm: missing arguments";
+      return "missing arguments";
     }
     if (!options.isEmpty() && options.getFirst().equals("--recursive") && arguments.isEmpty()){
       cli.currentDirectory.delete(arguments.getFirst());
-      return "rm: '--recursive'";
+      return "'--recursive' removed";
     } else if (!options.isEmpty() && options.getFirst().equals("--recursive")) {
       cli.currentDirectory.delete(arguments.getFirst());
     } else {
@@ -29,10 +29,10 @@ public class RmCommand implements Command{
         if (!(obj instanceof Directory)){
           cli.currentDirectory.delete(arguments.getFirst());
         } else {
-          return "rm: cannot remove '" + arguments.getFirst() + "': Is a directory";
+          return "cannot remove '" + arguments.getFirst() + "', is a directory";
         }
       }
     }
-    return arguments.getFirst() + " deleted";
+    return "'" + arguments.getFirst() + "' removed";
   }
 }
