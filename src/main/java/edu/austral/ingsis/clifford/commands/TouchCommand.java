@@ -1,7 +1,6 @@
 package edu.austral.ingsis.clifford.commands;
 
 import edu.austral.ingsis.clifford.CLI;
-import edu.austral.ingsis.clifford.files.Directory;
 import edu.austral.ingsis.clifford.files.File;
 import edu.austral.ingsis.clifford.files.FileSystem;
 
@@ -28,7 +27,7 @@ public class TouchCommand implements Command{
 
     // Check if a file with the same name already exists
     Optional<FileSystem> existingFile = cli.currentDirectory.getFileSystems().stream()
-        .filter(fs -> fs.getName().equals(name) && fs instanceof File)
+        .filter(fs -> fs.name().equals(name) && fs instanceof File)
         .findFirst();
 
     // If it exists, remove it

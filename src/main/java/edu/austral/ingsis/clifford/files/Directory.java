@@ -14,16 +14,8 @@ public class Directory implements FileSystem{
   }
 
   @Override
-  public String getName() {
+  public String name() {
     return name;
-  }
-
-  @Override
-  public void print() {
-    System.out.println(getName());
-    for (FileSystem fileSystem : fileSystems) {
-      fileSystem.print();
-    }
   }
 
   public void add(FileSystem fileSystem) {
@@ -32,7 +24,7 @@ public class Directory implements FileSystem{
 
   public void delete(String name) {
     Optional<FileSystem> fileSystem = fileSystems.stream().
-        filter(fs -> fs.getName().equals(name))
+        filter(fs -> fs.name().equals(name))
         .findFirst();
 
     if (fileSystem.isPresent()) {
@@ -48,7 +40,7 @@ public class Directory implements FileSystem{
 
   public FileSystem getFileSystem(String name) {
     Optional<FileSystem> fileSystem = fileSystems.stream()
-        .filter(fs -> fs.getName().equals(name))
+        .filter(fs -> fs.name().equals(name))
         .findFirst();
 
     if (fileSystem.isPresent()) {

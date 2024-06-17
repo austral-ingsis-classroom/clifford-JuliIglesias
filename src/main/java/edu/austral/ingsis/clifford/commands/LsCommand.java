@@ -1,7 +1,6 @@
 package edu.austral.ingsis.clifford.commands;
 
 import edu.austral.ingsis.clifford.CLI;
-import edu.austral.ingsis.clifford.files.Directory;
 import edu.austral.ingsis.clifford.files.FileSystem;
 
 import java.util.ArrayList;
@@ -51,7 +50,7 @@ public class LsCommand implements Command {
   private List<String> getListName(List<FileSystem> fileSystems) {
     List<String> names = new ArrayList<>();
     for (FileSystem fileSystem : fileSystems) {
-      names.add(fileSystem.getName());
+      names.add(fileSystem.name());
     }
     return names;
   }

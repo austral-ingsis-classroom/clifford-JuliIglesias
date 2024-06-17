@@ -25,12 +25,12 @@ public class CdCommand implements Command{
     String arg = arguments.getFirst();
     switch (arg) {
       case "..":
-        Directory parent = findDirWithName(cli.root, cli.currentDirectory.getName());
+        Directory parent = findDirWithName(cli.root, cli.currentDirectory.name());
         if (parent == null){
           cli.currentDirectory = cli.root;
-          return "moved to directory '" + cli.root.getName() +"'";
+          return "moved to directory '" + cli.root.name() +"'";
         }
-        cli.currentDirectory = findDirWithName(cli.root, cli.currentDirectory.getName());
+        cli.currentDirectory = findDirWithName(cli.root, cli.currentDirectory.name());
         break;
 
       case ".":
@@ -56,7 +56,7 @@ public class CdCommand implements Command{
         break;
     }
 
-    return "moved to directory '" + cli.currentDirectory.getName() + "'";
+    return "moved to directory '" + cli.currentDirectory.name() + "'";
   }
 
   private void navigateToDirectory(String[] ruta) {
@@ -78,7 +78,7 @@ public class CdCommand implements Command{
       if (!(system instanceof Directory)) {
         continue;
       }
-      if (system.getName().equals(name)) {
+      if (system.name().equals(name)) {
         return dir;
       }
       Directory search = findDirWithName((Directory) system, name);
