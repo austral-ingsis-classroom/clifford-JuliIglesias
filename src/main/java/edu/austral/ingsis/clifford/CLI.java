@@ -2,14 +2,12 @@ package edu.austral.ingsis.clifford;
 
 import edu.austral.ingsis.clifford.commands.*;
 import edu.austral.ingsis.clifford.files.Directory;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class CLI {
   public final Directory root;
   public Directory currentDirectory;
-
 
   public CLI(Directory root) {
     this.root = root;
@@ -23,7 +21,6 @@ public class CLI {
     List<String> options = new ArrayList<>();
 
     List<String> args = new ArrayList<>();
-
 
     for (int i = 1; i < commandParts.length; i++) {
       if (commandParts[i].startsWith("--")) {
@@ -50,7 +47,7 @@ public class CLI {
       case "pwd":
         return new PwdCommand(this).execute(options, args);
       default:
-        return "Command not found: "+ commandName;
+        return "Command not found: " + commandName;
     }
   }
 }

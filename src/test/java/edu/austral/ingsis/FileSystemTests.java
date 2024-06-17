@@ -45,8 +45,7 @@ public class FileSystemTests {
             entry("pwd", "/emily"),
             entry("touch elizabeth.txt", "'elizabeth.txt' file created"),
             entry("mkdir t-bone", "'t-bone' directory created"),
-            entry("ls", "elizabeth.txt t-bone")
-    ));
+            entry("ls", "elizabeth.txt t-bone")));
   }
 
   @Test

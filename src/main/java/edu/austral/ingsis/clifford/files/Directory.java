@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class Directory implements FileSystem{
+public class Directory implements FileSystem {
   private final String name;
   private final List<FileSystem> fileSystems;
 
@@ -23,9 +23,8 @@ public class Directory implements FileSystem{
   }
 
   public void delete(String name) {
-    Optional<FileSystem> fileSystem = fileSystems.stream().
-        filter(fs -> fs.name().equals(name))
-        .findFirst();
+    Optional<FileSystem> fileSystem =
+        fileSystems.stream().filter(fs -> fs.name().equals(name)).findFirst();
 
     if (fileSystem.isPresent()) {
       fileSystems.remove(fileSystem.get());
@@ -39,9 +38,8 @@ public class Directory implements FileSystem{
   }
 
   public FileSystem getFileSystem(String name) {
-    Optional<FileSystem> fileSystem = fileSystems.stream()
-        .filter(fs -> fs.name().equals(name))
-        .findFirst();
+    Optional<FileSystem> fileSystem =
+        fileSystems.stream().filter(fs -> fs.name().equals(name)).findFirst();
 
     if (fileSystem.isPresent()) {
       return fileSystem.get();

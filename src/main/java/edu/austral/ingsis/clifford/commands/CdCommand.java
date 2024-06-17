@@ -3,10 +3,9 @@ package edu.austral.ingsis.clifford.commands;
 import edu.austral.ingsis.clifford.CLI;
 import edu.austral.ingsis.clifford.files.Directory;
 import edu.austral.ingsis.clifford.files.FileSystem;
-
 import java.util.List;
 
-public class CdCommand implements Command{
+public class CdCommand implements Command {
   private final CLI cli;
 
   public CdCommand(CLI cli) {
@@ -15,10 +14,10 @@ public class CdCommand implements Command{
 
   @Override
   public String execute(List<String> options, List<String> arguments) {
-    if (!options.isEmpty()){
+    if (!options.isEmpty()) {
       return "no options allowed";
     }
-    if (arguments.size() != 1){
+    if (arguments.size() != 1) {
       return "invalid arguments";
     }
 
@@ -26,9 +25,9 @@ public class CdCommand implements Command{
     switch (arg) {
       case "..":
         Directory parent = findDirWithName(cli.root, cli.currentDirectory.name());
-        if (parent == null){
+        if (parent == null) {
           cli.currentDirectory = cli.root;
-          return "moved to directory '" + cli.root.name() +"'";
+          return "moved to directory '" + cli.root.name() + "'";
         }
         cli.currentDirectory = findDirWithName(cli.root, cli.currentDirectory.name());
         break;
@@ -37,19 +36,19 @@ public class CdCommand implements Command{
         break;
 
       default:
-        if (arg.startsWith("/")){
+        if (arg.startsWith("/")) {
           cli.currentDirectory = cli.root;
           String[] ruta = arg.split("/");
           try {
             navigateToDirectory(ruta);
-          } catch (Exception e){
+          } catch (Exception e) {
             return e.getMessage();
           }
         } else {
           String[] ruta = arg.split("/");
           try {
             navigateToDirectory(ruta);
-          } catch (Exception e){
+          } catch (Exception e) {
             return e.getMessage();
           }
         }
@@ -61,11 +60,11 @@ public class CdCommand implements Command{
 
   private void navigateToDirectory(String[] ruta) {
     Directory start = cli.currentDirectory;
-    for (String dir : ruta){
+    for (String dir : ruta) {
       try {
         FileSystem nextDir = cli.currentDirectory.getFileSystem(dir);
         cli.currentDirectory = (Directory) nextDir;
-      } catch (Exception e){
+      } catch (Exception e) {
         cli.currentDirectory = start;
         throw new IllegalArgumentException("'" + dir + "' directory does not exist");
       }
@@ -88,5 +87,4 @@ public class CdCommand implements Command{
     }
     return null;
   }
-
 }

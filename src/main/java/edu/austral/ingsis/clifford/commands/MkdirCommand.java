@@ -2,13 +2,12 @@ package edu.austral.ingsis.clifford.commands;
 
 import edu.austral.ingsis.clifford.CLI;
 import edu.austral.ingsis.clifford.files.Directory;
-
 import java.util.List;
 
-public class MkdirCommand implements Command{
+public class MkdirCommand implements Command {
   private final CLI cli;
 
-  public MkdirCommand(CLI cli){
+  public MkdirCommand(CLI cli) {
     this.cli = cli;
   }
 

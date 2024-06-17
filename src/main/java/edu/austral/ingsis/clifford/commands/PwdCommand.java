@@ -3,13 +3,12 @@ package edu.austral.ingsis.clifford.commands;
 import edu.austral.ingsis.clifford.CLI;
 import edu.austral.ingsis.clifford.files.Directory;
 import edu.austral.ingsis.clifford.files.FileSystem;
-
 import java.util.List;
 
-public class PwdCommand implements Command{
+public class PwdCommand implements Command {
   private final CLI cli;
 
-  public PwdCommand(CLI cli){
+  public PwdCommand(CLI cli) {
     this.cli = cli;
   }
 
@@ -18,9 +17,9 @@ public class PwdCommand implements Command{
     StringBuilder sb = new StringBuilder("/");
     Directory inicio = cli.currentDirectory;
 
-    while(inicio != null){
+    while (inicio != null) {
       Directory parent = findDirWithName(cli.root, inicio.name());
-      if(parent == null){
+      if (parent == null) {
         break;
       }
       sb.insert(0, "/" + parent.name());
@@ -48,6 +47,4 @@ public class PwdCommand implements Command{
     }
     return null;
   }
-
-
 }

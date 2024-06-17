@@ -2,7 +2,6 @@ package edu.austral.ingsis.clifford.commands;
 
 import edu.austral.ingsis.clifford.CLI;
 import edu.austral.ingsis.clifford.files.FileSystem;
-
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -10,12 +9,12 @@ import java.util.List;
 public class LsCommand implements Command {
   private final CLI cli;
 
-  public LsCommand(CLI cli){
+  public LsCommand(CLI cli) {
     this.cli = cli;
   }
 
   @Override
-  public String execute(List<String> options, List<String> arguments){
+  public String execute(List<String> options, List<String> arguments) {
     if (options.size() > 1 || !arguments.isEmpty()) {
       return "ls does not accept invalid arguments or options";
     }
@@ -62,5 +61,4 @@ public class LsCommand implements Command {
     }
     return sb.isEmpty() ? "" : sb.substring(0, sb.length() - 1);
   }
-
 }
