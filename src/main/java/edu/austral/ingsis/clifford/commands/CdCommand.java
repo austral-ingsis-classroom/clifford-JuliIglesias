@@ -22,7 +22,7 @@ public class CdCommand implements Command{
       return "Invalid number of arguments";
     }
 
-    String arg = arguments.get(0);
+    String arg = arguments.getFirst();
     switch (arg) {
       case "..":
         Directory parent = findDirWithName(cli.root, cli.currentDirectory.getName());
@@ -63,12 +63,10 @@ public class CdCommand implements Command{
     Directory start = cli.currentDirectory;
     for (String dir : ruta){
       try {
-        cli.currentDirectory = findDirWithName(start, dir);
-        if (cli.currentDirectory == null){
-          throw new Exception("Directory not found: " + dir);
-        }
-        start = cli.currentDirectory;
+        FileSystem nextDir = cli.currentDirectory.getFileSystem(dir);
+        cli.currentDirectory = (Directory) nextDir;
       } catch (Exception e){
+        cli.currentDirectory = start;
         throw new IllegalArgumentException("Directory not found: " + dir);
       }
     }
