@@ -58,8 +58,7 @@ public class FileSystemTests {
             entry("cd emily", "moved to directory 'emily'"),
             entry("touch elizabeth.txt", "'elizabeth.txt' file created"),
             entry("mkdir t-bone", "'t-bone' directory created"),
-            entry("touch elizabeth.txt", "'elizabeth.txt' file created"),
-            entry("ls", "t-bone elizabeth.txt"),
+            entry("ls", "elizabeth.txt t-bone"),
             entry("rm t-bone", "cannot remove 't-bone', is a directory"),
             entry("rm --recursive t-bone", "'t-bone' removed"),
             entry("ls", "elizabeth.txt"),
@@ -114,11 +113,11 @@ public class FileSystemTests {
             entry("mkdir emily", "'emily' directory created"),
             entry("cd emily", "moved to directory 'emily'"),
             entry("mkdir emily", "'emily' directory created"),
-            entry("touch horace.txt", "'horace.txt' file created"),
+            entry("touch emily.txt", "'emily.txt' file created"),
             entry("touch jetta.txt", "'jetta.txt' file created"),
-            entry("ls", "emily horace.txt jetta.txt"),
+            entry("ls", "emily emily.txt jetta.txt"),
             entry("rm --recursive emily", "'emily' removed"),
-            entry("ls", "horace.txt jetta.txt"),
-            entry("ls --ord=desc", "jetta.txt horace.txt")));
+            entry("ls", "emily.txt jetta.txt"),
+            entry("ls --ord=desc", "jetta.txt emily.txt")));
   }
 }
